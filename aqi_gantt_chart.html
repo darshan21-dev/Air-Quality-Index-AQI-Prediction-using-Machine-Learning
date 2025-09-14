@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple AQI Project Gantt Chart</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: white;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #333;
+        }
+        
+        .title {
+            background: #4472C4;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .gantt-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        
+        .gantt-table th {
+            background: #D9E1F2;
+            border: 1px solid #333;
+            padding: 8px 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .gantt-table td {
+            border: 1px solid #333;
+            height: 35px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .phase-name {
+            background: #F2F2F2;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            width: 250px;
+        }
+        
+        .week-col {
+            width: 25px;
+        }
+        
+        .task-bar {
+            background: #70AD47;
+            color: white;
+            font-weight: bold;
+            margin: 2px;
+            border-radius: 3px;
+            height: 25px;
+            line-height: 25px;
+        }
+        
+        .phase-1 .task-bar { background: #4472C4; }
+        .phase-2 .task-bar { background: #E7E6E6; color: #333; }
+        .phase-3 .task-bar { background: #70AD47; }
+        .phase-4 .task-bar { background: #FFC000; color: #333; }
+        .phase-5 .task-bar { background: #C5504B; }
+        .phase-6 .task-bar { background: #7030A0; }
+        .phase-7 .task-bar { background: #0F5132; }
+        
+        .duration {
+            background: #E7E6E6;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-top: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">AQI Prediction Project Schedule - 22 Weeks</div>
+        
+        <table class="gantt-table">
+            <thead>
+                <tr>
+                    <th>Project Phase</th>
+                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th>
+                    <th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="phase-1">
+                    <td class="phase-name">Phase 1: Project Initiation & Research</td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                </tr>
+                
+                <tr class="phase-2">
+                    <td class="phase-name">Phase 2: Data Acquisition & Exploration</td>
+                    <td class="week-col"></td><td class="week-col"></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                </tr>
+                
+                <tr class="phase-3">
+                    <td class="phase-name">Phase 3: Data Preprocessing</td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"></td><td class="week-col"></td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                </tr>
+                
+                <tr class="phase-4">
+                    <td class="phase-name">Phase 4: Model Development & Training</td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                </tr>
+                
+                <tr class="phase-5">
+                    <td class="phase-name">Phase 5: Model Evaluation & Analysis</td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                </tr>
+                
+                <tr class="phase-6">
+                    <td class="phase-name">Phase 6: Prediction & Reporting</td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"></td>
+                </tr>
+                
+                <tr class="phase-7">
+                    <td class="phase-name">Phase 7: Final Review & Submission</td>
+                    <td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td><td class="week-col"></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                    <td class="week-col"><div class="task-bar">■</div></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="duration">Total Project Duration: 22 Weeks</div>
+    </div>
+</body>
+</html>

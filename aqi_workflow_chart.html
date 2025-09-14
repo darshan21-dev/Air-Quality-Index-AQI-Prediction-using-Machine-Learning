@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Prediction Workflow - Compact</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 15px;
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .step {
+            background: #f8f9fa;
+            border: 1.5px solid #dee2e6;
+            border-radius: 8px;
+            padding: 8px 12px;
+            min-width: 200px;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-size: 12px;
+        }
+        
+        .step.data { border-color: #007bff; background: #e7f3ff; color: #0056b3; }
+        .step.process { border-color: #fd7e14; background: #fff4e6; color: #bf5000; }
+        .step.model { border-color: #198754; background: #e8f5e8; color: #0f5132; }
+        .step.eval { border-color: #dc3545; background: #ffeaea; color: #842029; }
+        .step.predict { border-color: #6f42c1; background: #f3e8ff; color: #432874; }
+        
+        .step-title {
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+        
+        .step-details {
+            font-size: 10px;
+            opacity: 0.8;
+        }
+        
+        .arrow {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 12px solid #6c757d;
+            margin: 2px 0;
+        }
+        
+        .parallel-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .parallel-row .step {
+            min-width: 120px;
+            max-width: 140px;
+        }
+        
+        .bidirectional {
+            position: relative;
+        }
+        
+        .bidirectional::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 12px solid #6c757d;
+        }
+        
+        .preprocessing-grid {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .mini-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 9px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 500px) {
+            .parallel-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .step {
+                min-width: 180px;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">AQI Prediction ML Workflow</div>
+        
+        <div class="flowchart">
+            <!-- Data Input -->
+            <div class="step data">
+                <div class="step-title">Historical AQ Data</div>
+                <div class="step-details">city_day.csv</div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Preprocessing -->
+            <div class="step process">
+                <div class="step-title">Data Preprocessing</div>
+                <div class="preprocessing-grid">
+                    <div class="mini-item">Missing Values</div>
+                    <div class="mini-item">Feature Drop</div>
+                    <div class="mini-item">AQI Clip</div>
+                </div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Feature Target -->
+            <div class="step model">
+                <div class="step-title">Feature & Target Separation</div>
+                <div class="step-details">X (Features) & y (AQI)</div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Split -->
+            <div class="step model">
+                <div class="step-title">Train-Test Split</div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Scaling -->
+            <div class="step process">
+                <div class="step-title">Feature Scaling</div>
+                <div class="step-details">StandardScaler</div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Training -->
+            <div class="step model">
+                <div class="step-title">RandomForestRegressor Training</div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Trained Model -->
+            <div class="step model">
+                <div class="step-title">Trained Model</div>
+            </div>
+            
+            <div class="arrow bidirectional"></div>
+            
+            <!-- Evaluation Row -->
+            <div class="parallel-row">
+                <div class="step eval">
+                    <div class="step-title">Model Evaluation</div>
+                </div>
+                
+                <div class="step eval">
+                    <div class="step-title">Performance Metrics</div>
+                    <div class="preprocessing-grid">
+                        <div class="mini-item">MAE</div>
+                        <div class="mini-item">MSE</div>
+                        <div class="mini-item">RMSE</div>
+                        <div class="mini-item">R²</div>
+                    </div>
+                </div>
+                
+                <div class="step eval">
+                    <div class="step-title">Visualizations</div>
+                    <div class="preprocessing-grid">
+                        <div class="mini-item">Actual vs Predicted</div>
+                        <div class="mini-item">Feature Importance</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- New Input -->
+            <div class="step data">
+                <div class="step-title">New Input Data</div>
+                <div class="step-details">Manual / Simulated</div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Prediction -->
+            <div class="step predict">
+                <div class="step-title">Prediction</div>
+            </div>
+            
+            <div class="arrow"></div>
+            
+            <!-- Final Output -->
+            <div class="step predict">
+                <div class="step-title">AQI Forecast & Category</div>
+                <div class="step-details">Good | Moderate | Poor | Very Poor | Severe</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+# Python specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+.pytest_cache/
+archive/
+
+# Jupyter Notebook files
+.ipynb_checkpoints
+
+# IDE-specific files
+.vscode/        # VS Code specific files
+.idea/          # PyCharm specific files
+
+# Operating System Files
+.DS_Store       # macOS
+Thumbs.db       # Windows
+ehthumbs.db     # Windows
+*.stackdump
+*.nvprm_profile
+*.wmdb
+*.pdb
+
+# Data files (usually large, download instructions should be in README)
+archive/ # This ignores the entire archive folder containing city_day.csv
+
+# If you only want to ignore the city_day.csv itself (assuming 'archive' folder is desired)
+# archive/city_day.csv
+
+# Log files
+*.log
+*.sqlite
+*.db
+
+# Environment variables files
+.env
+.flaskenv
+
+# Other temporary files
+*~
+#*#
+.#*
